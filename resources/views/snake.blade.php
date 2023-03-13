@@ -1,7 +1,5 @@
 <x-app-layout>
 
-
-<!DOCTYPE html>
 <html>
   <head>
   	<title>Snake Game</title>
@@ -70,7 +68,7 @@
 		
         // Call main again
         main();
-      }, 400)
+      }, 150)
     }
 	
 	
@@ -135,23 +133,20 @@
 	}
     
     
-    }
-    
-    
     function drawSnake() {
 	snakeboard_ctx.fillStyle = snake_col;
     snakeboard_ctx.strokestyle = snake_border;
     snakeboard_ctx.fillRect(snake[0].x, snake[0].y, 50, 50);
 	snakeboard_ctx.strokeRect(snake[0].x, snake[0].y, 50, 50);
       
-	  for(let i = 1; i < snake.length; i++){
+	//   for(let i = 1; i < snake.length; i++){
 	  
-	  if (snake[i-1].x != snake[i].x && )snake[i-1{
-		snakeboard_ctx.fillRect(snakePart.x, snakePart.y+10, 50, 40);
-		snakeboard_ctx.strokeRect(snakePart.x, snakePart.y+10, 50, 40);
-		}
+	//   if (snake[i-1].x != snake[i].x && )snake[i-1{
+	// 	snakeboard_ctx.fillRect(snakePart.x, snakePart.y+10, 50, 40);
+	// 	snakeboard_ctx.strokeRect(snakePart.x, snakePart.y+10, 50, 40);
+	// 	}
 		
-		}
+	// 	}
 	}
 function has_game_ended() {
       for (let i = 4; i < snake.length; i++) {
