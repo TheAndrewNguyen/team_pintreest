@@ -18,13 +18,13 @@
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Posts') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('2048')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link :href="route('2048')" :active="request()->routeIs('2048')">
                         {{ __('2048') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('snake')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link :href="route('snake')" :active="request()->routeIs('snake')">
                         {{ __('snake') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('minesweeper')" :active="request()->routeIs('posts.index')">
+                    <x-nav-link :href="route('minesweeper')" :active="request()->routeIs('minesweeper')">
                         {{ __('minesweeper') }}
                     </x-nav-link>
                 </div>

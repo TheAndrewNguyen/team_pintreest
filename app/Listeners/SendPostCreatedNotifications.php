@@ -24,7 +24,7 @@ class SendPostCreatedNotifications implements ShouldQueue
     public function handle(PostCreated $event): void
     {
         foreach (User::whereNot('id', $event->post->user_id)->cursor() as $user) {
-            $user->notify(new NewPost($event->post));
+            // $user->notify(new NewPost($event->post));
         }
     }
 }
