@@ -21,6 +21,12 @@
                     <x-nav-link :href="route('2048')" :active="request()->routeIs('posts.index')">
                         {{ __('2048') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('snake')" :active="request()->routeIs('posts.index')">
+                        {{ __('snake') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('minesweeper')" :active="request()->routeIs('posts.index')">
+                        {{ __('minesweeper') }}
+                    </x-nav-link>
                 </div>
                 
             </div>

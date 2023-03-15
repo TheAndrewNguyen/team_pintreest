@@ -1,12 +1,7 @@
-/**
- * Created by 伟健 on 2014/8/20.
- * Some support functions like get positions, get number background color, move with a direction and so on
- */
-
-documentWidth = window.screen.availWidth;
-gridContainerWidth = 0.92 * documentWidth;
-cellSideLength = 0.18 * documentWidth;
-cellSpace = 0.04*documentWidth;
+let documentWidth = window.screen.availWidth;
+let gridContainerWidth = 0.92 * documentWidth;
+let cellSideLength = 0.18 * documentWidth;
+let cellSpace = 0.04*documentWidth;
 console.log("support loaded");
 
 function getPosTop( i , j ){

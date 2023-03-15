@@ -35,10 +35,8 @@ function prepareForMobile(){
 }
 
 function newgame(){
-    //初始化棋盘格
     init();
     console.log(1);
-    //在随机两个格子生成数字
     generateOneNumber();
     generateOneNumber();
     console.log(2);
