@@ -35,11 +35,21 @@ class PostController extends Controller
     {
         $validated = $request->validate([
             'message' => 'required|string|max:255',
+            'image' => 'required|image',
         ]);
  
-        $request->user()->posts()->create($validated);
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+
+        $data = [
+            'message'=>$request->message,
+            'image_name' => $imageName,
+        ];
+
+        $request->user()->posts()->create($data);
  
-        return redirect(route('posts.index'));    }
+        return redirect(route('posts.index'));
+    }
 
     /**
      * Display the specified resource.

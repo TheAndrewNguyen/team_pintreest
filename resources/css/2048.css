@@ -1,9 +1,4 @@
-/**
- * Created by 伟健 on 2014/8/20.
- */
 
-
-/*样式设计*/
 header{
     display:block;
     margin:0 auto;
@@ -48,9 +43,9 @@ header p{
 
 /*4*4棋盘格的布局*/
 #grid-container{
-    width:460px;                             /*宽*/
-    height:460px;                            /*高*/
-    padding:20px;                            /*缝隙，组合起来就是500*500的棋盘格*/
+    width:500px;    
+    height:500px;                       
+    padding:20px;                            
 
     margin:10px auto;
     background-color:#42280E;

@@ -1,7 +1,3 @@
-import './jquery.min.js';
-import './showanimation2048';
-import './support2048';
-
 var board = new Array();
 var score = 0;
 var hasConflicted = new Array();
@@ -89,7 +85,7 @@ function updateBoardView(){
                 theNumberCell.css('background-size', "cover");
                 // theNumberCell.css('background-image', (getNumberBackgroundImage( board[i][j] )) );
                 theNumberCell.css('color',getNumberColor( board[i][j] ) );
-                theNumberCell.text( board[i][j] );
+                // theNumberCell.text( board[i][j] );
             }
 
             hasConflicted[i][j] = false;
@@ -104,7 +100,6 @@ function generateOneNumber(){
     if( nospace( board ) )
         return false;
 
-    //随机一个位置
     var randx = parseInt( Math.floor( Math.random()  * 4 ) );
     var randy = parseInt( Math.floor( Math.random()  * 4 ) );
 
@@ -128,10 +123,8 @@ function generateOneNumber(){
             }
     }
 
-    //随机一个数字
     var randNumber = Math.random() < 0.5 ? 2 : 4;
 
-    //在随机位置显示随机数字
     board[randx][randy] = randNumber;
     showNumberWithAnimation( randx , randy , randNumber );
     updateBoardView();
@@ -394,4 +387,20 @@ function moveDown(){
     return true;
 }
 
-export default newgame();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

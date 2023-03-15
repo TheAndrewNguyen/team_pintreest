@@ -8,8 +8,12 @@
 
     <title>Game 2048</title>
 
-    @vite(['resources/css/app.css', 'resources/css/2048.css', 'resources/js/app.js', 'resources/js/2048/jquery.min.js', 'resources/js/2048/support2048.js', 'resources/js/2048/showanimation2048.js', 'resources/js/2048/main2048.js'])
+    @vite(['resources/css/2048.css'])
 
+    <script type="text/javascript" src="./js/2048/jquery.min.js"></script>
+    <script type="text/javascript" src="./js/2048/support2048.js"></script>
+    <script type="text/javascript" src="./js/2048/showanimation2048.js"></script>
+    <script type="text/javascript" src="./js/2048/main2048.js"></script>
 </head>
 <body>
 <header>
@@ -21,7 +25,7 @@
 </header>
 
 
-<div id="grid-container">
+<div id="grid-container" style="width:500px; height:500px;">
     <div class="grid-cell" id="grid-cell-0-0"></div>
     <div class="grid-cell" id="grid-cell-0-1"></div>
     <div class="grid-cell" id="grid-cell-0-2"></div>
