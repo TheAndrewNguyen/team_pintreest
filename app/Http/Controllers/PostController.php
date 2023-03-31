@@ -34,6 +34,7 @@ class PostController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
+            'title' => 'required|string|max:255',
             'message' => 'required|string|max:255',
             'image' => 'required|image',
         ]);
@@ -42,6 +43,7 @@ class PostController extends Controller
         $request->image->move(public_path('images'), $imageName);
 
         $data = [
+            'title'=>$request->title,
             'message'=>$request->message,
             'image_name' => $imageName,
         ];
@@ -56,7 +58,10 @@ class PostController extends Controller
      */
     public function show(post $post)
     {
-        //
+        return view('posts.show', [
+            'post' => $post,
+            'slug' => $post->id,
+        ]);
     }
 
     /**

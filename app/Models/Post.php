@@ -15,6 +15,7 @@ class post extends Model
     protected $fillable = [
         'message',
         'image_name',
+        'title',
     ];
 
     protected $dispatchesEvents = [
