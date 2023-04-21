@@ -3,12 +3,13 @@
         <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
             @csrf
             <input type="file" class="form-control" name="image" />
+            <input type="text" class="form-control" name="title"
+                placeholder="{{ __('Title') }}"></input>
             <textarea
                 name="message"
                 placeholder="{{ __('What\'s on your mind?') }}"
                 class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
             >{{ old('message') }}</textarea>
-            <input type="text" class="form-control" name="title"></input>
 
             <button type="submit" class="btn btn-sm">Upload</button>
             
@@ -58,10 +59,10 @@
                         </div>
                         <a href="/posts/{{$post->id}}">
                             <h1 style="font-size:24px;">{{ $post->title }}</h1>
+                            <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                         </a>
-                        <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                         @if($post->image_name)
-                            <p class="mt-4 text-lg text-gray-900">{{ $post->image_name }}</p>
+                            <!-- <p class="mt-4 text-lg text-gray-900">{{ $post->image_name }}</p> -->
                             <img src="./images/{{$post->image_name}}"></img>
                         @endif
                     </div>

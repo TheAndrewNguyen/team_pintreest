@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\post;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -22,8 +23,10 @@ class ProfileController extends Controller
     }
 
     public function show(Request $request) {
+
         return view('profile.show', [
             'user' => $request->user(),
+            'posts' => Post::with('user')->latest()->get(),
         ]);
     }
 
