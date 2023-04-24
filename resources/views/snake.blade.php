@@ -7,11 +7,27 @@
 
   </head>
   <body>
-
+	<button onclick="clicked()" class="button1">Play Again</button>
+	 
     <canvas id="snakeboard" class="snakeboard" width="450" height="450"></canvas>
 
     <style>
-	
+	.button {
+	margin-left: 100px;
+	margin-top: 20px;
+	  border: black;
+	  color: white;
+	  padding: 20px 30px;
+	  text-align: center;
+	  text-decoration: none;
+	  display: inline-block;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  cursor: pointer;
+	}
+
+	.button1 {background-color: #00FF00;} /* Green */
+
       #snakeboard {
         position: absolute;
         top: 50%;
@@ -19,9 +35,33 @@
         transform: translate(-50%, -50%);
       }
     </style>
+	<!--    <img id = "img" src= "tright.gif" />    -->
+	
+	
   </body>
 
   <script>
+  
+	
+	function clicked() {
+	 snake = [      
+          {x: 100, y: 200, ahead: 'right', behind: null},
+          {x: 50, y: 200, ahead: 'right', behind: 'right'},
+          {x: 0, y: 200, ahead: 'right', behind: 'right'},]
+
+        fruit_x = 300;
+        fruit_y = 200;
+
+        changing_direction = false;
+        dx = 0;
+        dy = 0;
+		
+		main();
+	
+	}
+	
+  
+  
     const board_border = 'black';
     var board_background = "lightgreen";
     const snake_col = 'brown';
@@ -38,37 +78,71 @@
     let fruit_y = 200;
 
     let changing_direction = false;
-    let dx = 50;
+    let dx = 0;
     let dy = 0;
+	let game_closed = false;
     
     
     var snakeboard = document.getElementById("snakeboard");
     var snakeboard_ctx = snakeboard.getContext("2d");
     
-    main();
+    
+	main();
     
     document.addEventListener("keydown", change_direction);    
 
     function main() {
-		if (has_game_ended()) return;
+		if (has_game_ended() || game_closed) return;
 		changing_direction = false;
 		setTimeout(function onTick() {
-		clear_board();
-			
-		if(snake[0].x == fruit_x && snake[0].y == fruit_y){
-			fruit_spawn();
-			const head = {x: snake[0].x + dx, y: snake[0].y + dy, ahead: snake[0].ahead, behind: null};
-			snake.unshift(head);
-			snake[1].behind = snake[2].ahead;
+			clear_board();	
+			if(snake[0].x == fruit_x && snake[0].y == fruit_y){
+				fruit_spawn();
+				const head = {x: snake[0].x + dx, y: snake[0].y + dy, ahead: snake[0].ahead, behind: null};
+				snake.unshift(head);
+				snake[1].behind = snake[2].ahead;
+				}
+				
+			else if(dx != 0 || dy != 0)move_snake();
+			else{ //draws the head
+				var img = document.createElement("img");
+				img.src = "tright.gif";
+				snakeboard_ctx.drawImage(img, snake[0].x -28,snake[0].y -30, 100,100);
+				
+				//loads on the rest of the parts
+				var img = document.createElement("img");
+				img.src = "topleft.png";
+				snakeboard_ctx.drawImage(img, 1,1, 1,1);
+				var img = document.createElement("img");
+				img.src = "topright.png";
+				snakeboard_ctx.drawImage(img, 1,1, 1,1);
+				var img = document.createElement("img");
+				img.src = "bottomleft.png";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				var img = document.createElement("img");
+				img.src = "bottomright.png";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				var img = document.createElement("img");
+				img.src = "tleft.gif";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				var img = document.createElement("img");
+				img.src = "tdown.gif";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				var img = document.createElement("img");
+				img.src = "tup.gif";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				var img = document.createElement("img");
+				img.src = "woodup.png";
+				snakeboard_ctx.drawImage(img, 0,0, 1,1);
+				
 			}
 			
-		else move_snake();
-		draw_fruit();
-		drawSnake();
-			
-			
+			draw_fruit();
+			drawSnake();
+				
+				
 			main();
-		  }, 150)
+		}, 200)
 		}
 	
 	
@@ -94,10 +168,11 @@
 		
 		
 	function draw_fruit() {
-		snakeboard_ctx.fillStyle = apple_col;
-      	snakeboard_ctx.strokestyle = apple_border;
-      	snakeboard_ctx.fillRect(fruit_x, fruit_y, 50, 50);
-      	snakeboard_ctx.strokeRect(fruit_x , fruit_y, 50, 50);
+		
+		var img = document.createElement("img");
+		img.src = "sudowoodo.png";
+		snakeboard_ctx.drawImage(img, fruit_x-15, fruit_y-13, 85,75);
+			
 		return;
 		}
 		
@@ -131,10 +206,24 @@
     
     function drawSnake() {
 	
-		snakeboard_ctx.fillStyle = snake_col;
-		snakeboard_ctx.strokestyle = snake_border;
-		snakeboard_ctx.fillRect(snake[0].x, snake[0].y, 50, 50);
-		snakeboard_ctx.strokeRect(snake[0].x, snake[0].y, 50, 50);
+		var img = document.createElement("img");
+		
+		if (dx === -50){
+			img.src = "tleft.gif";
+			snakeboard_ctx.drawImage(img, snake[0].x -28,snake[0].y -30, 100,100);
+			}
+		else if (dy === -50){
+			img.src = "tup.gif";
+			snakeboard_ctx.drawImage(img, snake[0].x -27,snake[0].y -27, 100,100);
+			}
+		else if (dy === 50){
+			img.src = "tdown.gif";
+			snakeboard_ctx.drawImage(img, snake[0].x -27,snake[0].y -33, 100,100);
+			}
+		else if (dx == 50){
+		img.src = "tright.gif";
+		snakeboard_ctx.drawImage(img, snake[0].x -28,snake[0].y -30, 100,100);
+		}
 		
 		for (let i = 1; i < snake.length; i++){
 			drawSnakePart(i);
@@ -146,69 +235,49 @@
 		let behind = snake[snakepart].behind;
 		if (ahead === behind){
 			if (ahead === 'right' || ahead == 'left'){
-				snakeboard_ctx.fillStyle = snake_col;
-				snakeboard_ctx.strokestyle = snake_border;
-				snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y+10, 50, 30);
-				snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y+10, 50, 30);
+				var img = document.createElement("img");
+				img.src = "woodmid.png";
+				snakeboard_ctx.drawImage(img, snake[snakepart].x-72, snake[snakepart].y-60, 285,150);
+			
 			}
 			else {
-				snakeboard_ctx.fillStyle = snake_col;
-				snakeboard_ctx.strokestyle = snake_border;
-				snakeboard_ctx.fillRect(snake[snakepart].x + 10, snake[snakepart].y, 30, 50);
-				snakeboard_ctx.strokeRect(snake[snakepart].x+10, snake[snakepart].y, 30, 50);
+				var img = document.createElement("img");
+				img.src = "woodup.png";
+				snakeboard_ctx.drawImage(img, snake[snakepart].x-37, snake[snakepart].y-72, 150,285);
+			
 			}
 		}
-		else if (ahead === 'right' && behind === 'down'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-		}
+		//bottom left
+		else if (ahead === 'right' && behind === 'down' || (ahead === 'up' && behind === 'left')){
+			var img = document.createElement("img");
+			img.src = "bottomleft.png";
+			snakeboard_ctx.drawImage(img, snake[snakepart].x-138, snake[snakepart].y-96, 310,310);
 			
-		else if (ahead === 'right' && behind === 'up'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
 		}
-			
-		else if (ahead === 'left' && behind === 'down'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
+		// top left	
+		else if (ahead === 'right' && behind === 'up' || (ahead === 'down' && behind === 'left')){
+			var img = document.createElement("img");
+			img.src = "topleft.png";
+			snakeboard_ctx.drawImage(img, snake[snakepart].x-73, snake[snakepart].y-105, 310,310);
 		}
-			
-		else if (ahead === 'left' && behind === 'up'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
+		//bottom right	
+		else if (ahead === 'left' && behind === 'down' || (ahead === 'up' && behind === 'right')){
+			var img = document.createElement("img");
+			img.src = "bottomright.png";
+			snakeboard_ctx.drawImage(img, snake[snakepart].x-180, snake[snakepart].y-157, 310,310);
 		}
-		else if (ahead === 'up' && behind === 'left'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
+		//top right	
+		else if (ahead === 'left' && behind === 'up' ||(ahead === 'down' && behind === 'right')){
+			var img = document.createElement("img");
+			img.src = "topright.png";
+			snakeboard_ctx.drawImage(img, snake[snakepart].x-180, snake[snakepart].y-105, 310,310);
 		}
-		else if (ahead === 'up' && behind === 'right'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-		}
-		else if (ahead === 'down' && behind === 'left'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-		}
-		else if (ahead === 'down' && behind === 'right'){
-			snakeboard_ctx.fillStyle = 'black';
-			snakeboard_ctx.strokestyle = snake_border;
-			snakeboard_ctx.fillRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-			snakeboard_ctx.strokeRect(snake[snakepart].x, snake[snakepart].y, 50, 50);
-		}
+		
+		
+		
+		
+		
+		
 	}
 	
 	
@@ -237,6 +306,10 @@ function change_direction(event) {
     const RIGHT_KEY = 39;
     const UP_KEY = 38;
     const DOWN_KEY = 40;
+	
+ 
+ 
+ 
  
 	if(changing_direction) return;
 	changing_direction = true; 
@@ -246,6 +319,37 @@ function change_direction(event) {
     const goingDown = dy === 50;
     const goingRight = dx === 50;  
     const goingLeft = dx === -50;
+ 
+	//starts the game on first movement
+	/*
+	 if(dx ===0 && dy === 0){
+		if(keyPressed === 37){
+			dx = -50;
+			snake[0].ahead = 'left';
+			
+			return;
+			}
+		else if(keyPressed === 39){
+			dx = 50;
+			snake[0].ahead = 'right';
+			
+			return;
+			}
+		else if(keyPressed === 38){
+			dy = -50;
+			snake[0].ahead = 'up';
+			
+			return;
+			}
+		else if(keyPressed === 40){
+			dy = 50;
+			snake[0].ahead = 'down';
+			
+			return;
+			}
+			*/
+ 
+ 
  
 	if (keyPressed === LEFT_KEY && !goingRight){    
         dx = -50;
@@ -271,12 +375,27 @@ function change_direction(event) {
 		  
 		snake[0].ahead = 'down';
 		}
+	if (keyPressed === ENTER){
+          snake = [      
+          {x: 100, y: 200, ahead: 'right', behind: null},
+          {x: 50, y: 200, ahead: 'right', behind: 'right'},
+          {x: 0, y: 200, ahead: 'right', behind: 'right'},]
+
+        fruit_x = 300;
+        fruit_y = 200;
+
+        changing_direction = false;
+        dx = 0;
+        dy = 0;
+		game_closed = true;
+		
+		game_closed = false;
+		main();
 	
+	}
 	}
     
   </script>
 </html>
-    
-
 </x-app-layout>
 
