@@ -30,6 +30,13 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function save_post(Request $request, $id) {
+        $request->user()->saved = \Arr::add($request->user()->saved, $id, $id);
+        $request->user()->save();
+
+        return redirect(route('profile.show'));
+    }
+
     /**
      * Update the user's profile information.
      */
