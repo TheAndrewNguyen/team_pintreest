@@ -42,6 +42,10 @@ Route::get('/minesweeper', function () {
     return view('minesweeper');
 })->middleware(['auth', 'verified'])->name('minesweeper');
 
+Route::get('/action_page', function () {
+    return view('chat_res');
+});
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');

@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/app.js',
                 'resources/js/2048/jquery.min.js', 
                 'resources/js/2048/support2048.js', 
+                'resources/js/openAI/open_ai_test.js', 
                 'resources/js/showanimation2048.js', 
                 'resources/js/main2048.js', 
             ],
