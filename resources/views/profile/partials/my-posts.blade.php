@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <a href="/posts/{{$post->id}}">
-                    <h1 style="font-size:24px;">{{ $post->title }}</h1>
+                    <h1 style="font-size:24px; font-weight:800;">{{ $post->title }}</h1>
                     <p class="mt-4 text-lg text-gray-900">{{ $post->message }}</p>
                 </a>
                 @if($post->image_name)

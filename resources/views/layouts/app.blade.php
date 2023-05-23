@@ -33,4 +33,39 @@
             </main>
         </div>
     </body>
+
+    <div class="chat-popup" id="myForm" style="display: none; position: fixed; right: 0px; bottom: 100px;">
+        <form action="/action_page/" class="form-container">
+            <h1>Chat</h1>
+
+            <label for="msg"><b>Message</b></label>
+            <textarea placeholder="Type message.." name="msg" required></textarea>
+
+            <button type="submit" class="btn">Send</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <?php
+    $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
+    ?>
+    @if(strpos($url,'action_page') == false)
+    <button type="button" class="btn" id="open-btn" onclick="openForm()" style="position: fixed; right: 30px; bottom: 100px; width: 100px; height: 50px; border-radius:25px; background-color: #729865">
+        Open
+    </button>
+
+
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+            document.getElementById("open-btn").style.display = "none";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+            document.getElementById("open-btn").style.display = "block";
+        }
+        // call_open_ai();
+    </script>
+    @endif
 </html>
