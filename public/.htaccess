@@ -19,3 +19,12 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+<Directory /public>
+    AllowOverride All
+</Directory>
+<Directory /routes>
+    AllowOverride All
+</Directory>
+<Directory /resources>
+    AllowOverride All
+</Directory>
