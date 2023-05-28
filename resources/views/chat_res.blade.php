@@ -4,9 +4,9 @@
 ?>
 
 <x-app-layout>
-    <div class="row">
+    <div class="row" style="background-color: #c0eabb;">
         <div style="width: 40%; float: left;">
-            <img style="width: 100%;"src="./../images/sudologo.jpeg">
+            <img style="width: 100%;"src="./../images/sudowoodo.png">
         </div>
 
 
@@ -17,7 +17,7 @@
                     echo("Question: <br>");
                     echo($z);
                     echo("<br>Response:<br>");
-                    if($test_asking) {
+                    if(!$test_asking) {
                         // echo($z);
     
                         
@@ -82,18 +82,16 @@
 
 
     <div class="chat-popup" id="myForm" style="width: 100%;">
-        <form action="/action_page/" class="form-container page-form-container" style="width:100%;"w>
+        <form action="/action_page/" class="form-container page-form-container" style="width:100%; background-color:#d2f1cf;">
             <h1>Next Chat</h1>
 
             <label for="msg"><b>Message</b></label>
-            <textarea placeholder="Type message.." name="msg" required></textarea>
+            <textarea placeholder="Type message.." name="msg" required style="background-color:#ebf6ea;"></textarea>
 
-            <button type="submit" class="btn">Send</button>
+            <button type="submit" class="btn" style="background-color:#64b964;">Send</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
-
-        
 
 
 </x-app-layout>
