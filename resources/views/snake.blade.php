@@ -9,7 +9,7 @@
   <body>
 
 
-	<button onclick="clicked()" class="button1" style="width: 40%; margin-left: 30%; margin-top: 50px; margin-right: 30%;">Play Again</button>
+	<button onclick="clicked()" class="button1" style="width: 40%; margin-left: 30%; margin-top: 50px; margin-right: 30%; padding: 20px; border-radius: 15px;">Play Again</button>
 	 
     <canvas id="snakeboard" class="snakeboard" width="450" height="450"></canvas>
 
