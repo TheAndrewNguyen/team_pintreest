@@ -13,6 +13,58 @@
        <div class="mx-auto p-4 sm:p-6 lg:p-8" style="width: 60%; float: left; height: 100%;">
             <div>
                 <?php
+                    function convertToSudoWoodo($string) {
+                        // Define an array of syllable patterns
+                        $syllables = array(
+                            "/[aeiouy]/i", // Vowels
+                            "/[bcdfghjklmnpqrstvwxyz]{2,}/i", // Consonants with length 2 or more
+                            "/[bcdfghjklmnpqrstvwxyz]{1}/i" // Single consonants
+                        );
+                        
+                        $result = "";
+                        
+                        // Split the string into words
+                        $words = explode(" ", $string);
+                        
+                        // Process each word
+                        foreach ($words as $word) {
+                            // Split the word into syllables
+                            $syllableArray = preg_split('/[^a-z]/i', $word);
+                            
+                            // Process each syllable
+                            foreach ($syllableArray as $syllable) {
+                                // Determine the syllable type
+                                $syllableType = "";
+                                foreach ($syllables as $key => $pattern) {
+                                    if (preg_match($pattern, $syllable)) {
+                                        $syllableType = $key;
+                                        break;
+                                    }
+                                }
+                                
+                                // Convert the syllable to "SUDO" or "WOODO"
+                                switch ($syllableType) {
+                                    case 0:
+                                        $result .= "SUDO ";
+                                        break;
+                                    case 1:
+                                        $result .= "WOODO ";
+                                        break;
+                                    case 2:
+                                        $result .= "WOODO ";
+                                        break;
+                                    default:
+                                        $result .= $syllable . " ";
+                                }
+                            }
+                            
+                            $result .= " "; // Add a space between words
+                        }
+                        
+                        return trim($result);
+                    }
+
+
                     $test_asking = true;
                     echo("Question: <br>");
                     echo($z);
@@ -68,7 +120,12 @@
                         $d = json_decode($chat);
                         // Get Content
                         // echo("<br>CHAT:<br>");
+
+                        $true_text = $d->choices[0]->message->content;
+                        $translated = convertToSudoWoodo($true_text);
+
                         echo($d->choices[0]->message->content);
+                        echo($translated);
                     } else {
 
                         echo("PLACEHOLDER TEXT<br>");
