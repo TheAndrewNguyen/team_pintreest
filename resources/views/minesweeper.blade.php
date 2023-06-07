@@ -290,6 +290,8 @@
       <button type="button" class="action-btn js-new-game" aria-label="New game">
         <span class="default-emoji"></span>
         <span id="result" class="result-emoji"></span>
+        <span style="float:left;">Restart</span>
+        
       </button>
       <div id="map" role="grid" aria-label="Mine field">
       </div>
