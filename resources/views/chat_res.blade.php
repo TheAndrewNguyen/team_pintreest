@@ -92,5 +92,5 @@
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
-
+    
 </x-app-layout>
