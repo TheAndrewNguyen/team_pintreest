@@ -35,13 +35,13 @@
     </body>
 
     <div class="chat-popup" id="myForm" style="display: none; position: fixed; right: 0px; bottom: 100px;">
-        <form action="/action_page/" class="form-container">
+        <form action="/action_page/" class="form-container" style="background-color:#d2f1cf;">
             <h1>Chat</h1>
 
             <label for="msg"><b>Message</b></label>
-            <textarea placeholder="Type message.." name="msg" required></textarea>
+            <textarea placeholder="Type message.." name="msg" required style="background-color:#ebf6ea"></textarea>
 
-            <button type="submit" class="btn">Send</button>
+            <button type="submit" class="btn" style="background-color:#64b964;">Send</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
     </div>
@@ -50,7 +50,7 @@
     $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
     ?>
     @if(strpos($url,'action_page') == false)
-    <button type="button" class="btn" id="open-btn" onclick="openForm()" style="position: fixed; right: 30px; bottom: 100px; width: 100px; height: 50px; border-radius:25px; background-color: #729865">
+    <button type="button" class="btn" id="open-btn" onclick="openForm()" style="color:#fff;position: fixed; right: 30px; bottom: 100px; width: 100px; height: 50px; border-radius:25px; background-color: #729865">
         Open
     </button>
 
