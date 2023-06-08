@@ -14,7 +14,7 @@
         font-family: AppleColorEmoji;
         font-size: 15px;
         text-align: center;
-        padding: 20px 0;
+        /* padding: 20px 0; */
       }
 
       span, input, a, div, button {
