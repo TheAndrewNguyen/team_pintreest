@@ -7,7 +7,7 @@
 
   </head>
   <body>
-	<button onclick="clicked()" class="button1" style="margin-left: 30%; margin-right: 30%; width:40%; margin-top:30px; margin-bottom:100px; padding: 25px; border-radius: 10px;">Play Again</button>
+	<button onclick="clicked()" class="button1" style="margin-left: 30%; background-color: #729865; color: #fff; margin-right: 30%; width:40%; margin-top:30px; margin-bottom:100px; padding: 25px; border-radius: 10px;">Play Again</button>
 	 
     <canvas id="snakeboard" class="snakeboard" width="450" height="450"></canvas>
 
