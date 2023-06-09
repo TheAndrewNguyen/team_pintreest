@@ -1,0 +1,29 @@
+{
+  "hash": "445d0113",
+  "browserHash": "1dea228e",
+  "optimized": {
+    "alpinejs": {
+      "src": "../../alpinejs/dist/module.esm.js",
+      "file": "alpinejs.js",
+      "fileHash": "e7b12fef",
+      "needsInterop": false
+    },
+    "axios": {
+      "src": "../../axios/index.js",
+      "file": "axios.js",
+      "fileHash": "30a975c7",
+      "needsInterop": false
+    },
+    "openai": {
+      "src": "../../openai/dist/index.js",
+      "file": "openai.js",
+      "fileHash": "ca436a4a",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-RSJERJUL": {
+      "file": "chunk-RSJERJUL.js"
+    }
+  }
+}
