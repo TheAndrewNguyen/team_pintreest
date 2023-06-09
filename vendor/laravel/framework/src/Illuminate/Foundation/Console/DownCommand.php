@@ -2,7 +2,7 @@
 
 namespace Illuminate\Foundation\Console;
 
-use app\Http\Middleware\PreventRequestsDuringMaintenance;
+use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Events\MaintenanceModeEnabled;

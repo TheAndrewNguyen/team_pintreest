@@ -1,8 +1,8 @@
 <?php
 
-namespace app\Notifications;
+namespace App\Notifications;
 
-use app\Models\Post;
+use App\Models\Post;
 use Illuminate\Bus\Queueable;
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Queue\ShouldQueue;
