@@ -64,7 +64,7 @@
                         // echo($z);
     
                         
-                        $open_ai_key = "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";
+                        $open_ai_key = "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";
                         $open_ai = new OpenAi($open_ai_key);
                         
                         $chat = $open_ai->chat([
