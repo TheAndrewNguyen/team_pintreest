@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace app\Policies;
 
-use App\Models\Post;
-use App\Models\User;
+use app\Models\Post;
+use app\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class PostPolicy

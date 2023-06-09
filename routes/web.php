@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PostController;
+use app\Http\Controllers\ProfileController;
+use app\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
