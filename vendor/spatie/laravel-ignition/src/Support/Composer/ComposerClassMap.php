@@ -50,7 +50,7 @@ class ComposerClassMap
     /** @return array<string, mixed> */
     public function listClassesInPsrMaps(): array
     {
-        // TODO: This is incorrect. Doesnt list all fqcns. Need to parse namespace? e.g. App\LoginController is wrong
+        // TODO: This is incorrect. Doesnt list all fqcns. Need to parse namespace? e.g. app\LoginController is wrong
 
         $prefixes = array_merge(
             $this->composer->getPrefixes(),
@@ -117,7 +117,7 @@ class ComposerClassMap
         $class = trim(str_replace($this->basePath, '', (string)$file->getRealPath()), DIRECTORY_SEPARATOR);
 
         $class = str_replace(
-            [DIRECTORY_SEPARATOR, 'App\\'],
+            [DIRECTORY_SEPARATOR, 'app\\'],
             ['\\', app()->getNamespace()],
             ucfirst(Str::replaceLast('.php', '', $class))
         );

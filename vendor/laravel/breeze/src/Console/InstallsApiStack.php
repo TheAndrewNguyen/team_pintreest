@@ -26,7 +26,7 @@ trait InstallsApiStack
 
         $this->replaceInFile(
             '\Illuminate\Auth\Middleware\EnsureEmailIsVerified::class',
-            '\App\Http\Middleware\EnsureEmailIsVerified::class',
+            '\app\Http\Middleware\EnsureEmailIsVerified::class',
             app_path('Http/Kernel.php')
         );
 

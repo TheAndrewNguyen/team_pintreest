@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Listeners;
+namespace app\Listeners;
 
-use App\Events\PostCreated;
-use App\Models\User;
-use App\Notifications\NewPost;
+use app\Events\PostCreated;
+use app\Models\User;
+use app\Notifications\NewPost;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
